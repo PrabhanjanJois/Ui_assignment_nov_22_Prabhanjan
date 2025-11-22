@@ -1,18 +1,42 @@
-# React + Vite
+  # UI Assignment November 22
+UI Assignment – November 22
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My name is Prabhanjan, and I found this assignment very interesting.
+Thank you for the great opportunity — I enjoyed exploring the requirements and implementing all the criteria mentioned in the task.
 
-Currently, two official plugins are available:
+This project is fully completed as per the assignment guidelines and has been deployed on Netlify for easy access and testing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✔️ Key Features Implemented
+1. Enhanced Search Functionality
 
-## React Compiler
+Users can search using:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Channel
 
-Note: This will impact Vite dev & build performances.
+Region
 
-## Expanding the ESLint configuration
+Combined search (e.g., “facebook us”, “google europe”)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The search supports multiple tokens, and each token can match either a channel or region, offering a highly flexible and intuitive user experience.
+
+2. Filtering & Performance Updates
+
+All dashboard sections (KPIs, charts, performers) update correctly based on filtered data.
+
+Smooth UI updates without unnecessary re-renders.
+
+3. Redux Toolkit Integration
+
+State management is implemented using Redux Toolkit (RTK).
+
+Search & filter values are memoized using Reselect, ensuring optimized performance even with large datasets.
+
+4. Responsive Dashboard Layout
+
+Clean layout with scrollable table section.
+
+Dashboard KPIs, charts, and filters arranged properly for a professional analytical UI.
+
+5. Netlify Deployment
+
+The entire project has been deployed on Netlify, making it accessible for review and testing.
