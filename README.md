@@ -1,42 +1,87 @@
   # UI Assignment November 22
-UI Assignment – November 22
 
-My name is Prabhanjan, and I found this assignment very interesting.
-Thank you for the great opportunity — I enjoyed exploring the requirements and implementing all the criteria mentioned in the task.
 
-This project is fully completed as per the assignment guidelines and has been deployed on Netlify for easy access and testing.
+ # Hi, I’m Prabhanjan 👋
+I thoroughly enjoyed working on this UI assignment — it was interesting, well-structured, and a great opportunity to demonstrate UI engineering and state-management skills.
 
-✔️ Key Features Implemented
-1. Enhanced Search Functionality
+The project follows all the criteria mentioned in the assignment and has been deployed successfully on Netlify.
 
-Users can search using:
+🔗 Live Demo: https://lifesightprojectdemo.netlify.app/
+
+# 🚀 Tech Stack
+
+React
+
+Redux Toolkit
+
+Reselect (Memoized Selectors)
+
+React Lazy + Suspense
+
+CSS (Responsive Dashboard Layout)
+
+Error Boundaries
+
+Netlify Deployment
+
+
+# Supports searching by:
 
 Channel
 
 Region
 
-Combined search (e.g., “facebook us”, “google europe”)
+Combined inputs → e.g. "facebook us", "google europe", "instagram india"
 
-The search supports multiple tokens, and each token can match either a channel or region, offering a highly flexible and intuitive user experience.
+Search tokens match either field, allowing extremely flexible filtering.
 
-2. Filtering & Performance Updates
+Built with Redux Toolkit selectors and memoized using Reselect for optimized performance.
 
-All dashboard sections (KPIs, charts, performers) update correctly based on filtered data.
+# ⚡ 2. Redux Toolkit + Memoization
 
-Smooth UI updates without unnecessary re-renders.
+State is globally managed using RTK slices.
 
-3. Redux Toolkit Integration
+Expensive computations (filtered data, KPIs, charts) are memoized:
 
-State management is implemented using Redux Toolkit (RTK).
+Faster UI updates
 
-Search & filter values are memoized using Reselect, ensuring optimized performance even with large datasets.
+No unnecessary re-renders
 
-4. Responsive Dashboard Layout
+Smooth UX even with large data sets
 
-Clean layout with scrollable table section.
+# 🛡️ 3. Error Boundary Integration
 
-Dashboard KPIs, charts, and filters arranged properly for a professional analytical UI.
+Custom Error Boundary implemented to safely catch rendering errors.
 
-5. Netlify Deployment
+Prevents UI crashes and displays a clean fallback message.
 
-The entire project has been deployed on Netlify, making it accessible for review and testing.
+Ensures dashboard reliability.
+
+# 💤 4. Lazy Loading for Performance
+
+Non-critical components (charts, filters, tables) are lazy-loaded.
+
+Improves:
+
+Initial load time
+
+Dashboard responsiveness
+
+Resource usage
+
+# 📊 5. Dashboard with Enhanced UX
+
+Sticky header + scrollable content layout.
+
+KPI, Charts, Filters, and Table respond dynamically to search/filter changes.
+
+Data table has its own scroll container for clean browsing.
+
+Fully responsive layout.
+
+🌐 6. Deployment
+
+The project is deployed on Netlify for fast, reliable hosting.
+
+# 🔗 Live Application URL: https://lifesightprojectdemo.netlify.app/
+
