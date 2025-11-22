@@ -83,5 +83,6 @@ Fully responsive layout.
 
 The project is deployed on Netlify for fast, reliable hosting.
 
-# 🔗 Live Application URL: https://lifesightprojectdemo.netlify.app/
+# 🔗 Live Application URL: 
+https://lifesightprojectdemo.netlify.app/
 
