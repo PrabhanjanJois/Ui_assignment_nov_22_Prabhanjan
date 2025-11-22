@@ -1,0 +1,201 @@
+:root {
+  /* Set actual header height here (adjust if your Header's height differs) */
+  --header-height: 64px;
+}
+
+/* ---------- Layout container ---------- */
+/* keep header visible, allow main to scroll */
+.dashboard {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-secondary);
+  overflow: hidden; /* prevent the whole page from scrolling */
+}
+
+/* Header: keep it on top of everything and non-transparent */
+.dashboard-header,
+.header,
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  display: block;
+  background: var(--color-bg-primary); /* avoid transparency through content */
+  box-shadow: var(--shadow-sm); /* subtle separation */
+  /* ensure header contents don't overflow */
+  min-width: 0;
+  width: 100%;
+}
+
+/* main becomes the scrolling viewport for dashboard content.
+   Use calc so it sits below the header */
+.dashboard-main {
+  height: calc(100vh - var(--header-height));
+  width: 100%;
+  padding: var(--spacing-lg);
+  overflow: auto; /* allow internal scrolling */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+  box-sizing: border-box;
+}
+
+/* keep container centered but allow its children to shrink */
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 0; /* important for correct flex/grid shrinking behavior */
+  box-sizing: border-box;
+}
+
+/* keep sections spaced */
+.dashboard-section {
+  margin-bottom: var(--spacing-lg);
+  padding: 0; /* remove unexpected padding that may cause overflow */
+  min-height: 0; /* allow section to shrink inside scrolling parent */
+  min-width: 0;
+}
+
+/* ---------- Grid Layout for Chart + Sidebar ---------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: var(--spacing-lg);
+  grid-auto-rows: minmax(
+    0,
+    auto
+  ); /* important so children can shrink inside grid */
+  min-height: 0; /* allow the grid to be clipped by its parent */
+  min-width: 0;
+}
+
+.dashboard-chart-container {
+  min-height: 320px;
+  min-width: 0; /* allow children to overflow/ellipsis properly */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Sidebar should not force the grid taller than the viewport */
+.dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  min-height: 0;
+  min-width: 0;
+  overflow: visible;
+}
+
+/* ---------- DataTable / large content handling ---------- */
+/* make sure the data table area scrolls internally instead of forcing the page */
+.data-table-wrapper,
+.dashboard-section .data-table-wrapper {
+  /* ensure the table's scroll area fits inside main viewport.
+     We subtract header height and some margins; tune as needed. */
+  max-height: calc(100vh - var(--header-height) - 240px);
+  min-height: 120px;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: var(--spacing-sm);
+  background: var(--color-bg-primary);
+  border-radius: var(--border-radius-md);
+}
+
+/* example selector if your DataTable component renders a table element */
+.data-table-wrapper table,
+.data-table-wrapper .ant-table {
+  width: 100%;
+  table-layout: fixed; /* helps with overflow/ellipsis and responsiveness */
+  min-width: 600px; /* prevent super-narrow layout for many columns */
+}
+
+/* ---------- Error State (unchanged, kept here for context) ---------- */
+.dashboard-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--spacing-lg);
+}
+
+.dashboard-error .error-content {
+  text-align: center;
+  max-width: 500px;
+  background: var(--color-bg-primary);
+  padding: var(--spacing-xxl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- Buttons, animations, responsive rules (kept) ---------- */
+.retry-btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.retry-btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.retry-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-main {
+    padding: var(--spacing-md);
+  }
+
+  .dashboard-section {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .dashboard-sidebar {
+    flex-direction: column;
+  }
+}
+
+/* Performance optimizations */
+.dashboard-section {
+  contain: layout style;
+  will-change: contents;
+}
+
+/* Loading state animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-section {
+  animation: fadeIn 0.3s ease-out;
+}
