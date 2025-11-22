@@ -129,14 +129,28 @@ export const selectPageSize = (state) => state.dashboard.pageSize;
 export const selectFilteredData = createSelector(
   [selectRawData, selectSearchTerm, selectSelectedChannels],
   (data, searchTerm, selectedChannels) => {
-    return data.filter((item) => {
-      const matchesSearch =
-        searchTerm === "" ||
-        item.channel.toLowerCase().includes(searchTerm.toLowerCase());
+    // Normalize and split the search term into tokens.
+    // Accept separators: space, comma, plus.
+    const tokens = (searchTerm || "")
+      .trim()
+      .toLowerCase()
+      .split(/[\s,+]+/)
+      .filter(Boolean); // remove empty tokens
 
+    return data.filter((item) => {
+      const channel = (item.channel || "").toLowerCase();
+      const region = (item.region || "").toLowerCase();
+
+      // If tokens exist, require that every token matches either channel or region.
+      const matchesSearch =
+        tokens.length === 0 ||
+        tokens.every((t) => channel.includes(t) || region.includes(t));
+
+      // Keep existing channel-selection logic (unchanged)
       const matchesChannel =
-        selectedChannels.length === 0 ||
-        selectedChannels.includes(item.channel);
+        !selectedChannels || selectedChannels.length === 0
+          ? true
+          : selectedChannels.includes(item.channel);
 
       return matchesSearch && matchesChannel;
     });

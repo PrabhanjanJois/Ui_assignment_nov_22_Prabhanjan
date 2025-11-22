@@ -127,7 +127,7 @@ const DataTable = () => {
         <div style={styles.searchContainer}>
           <input
             type="text"
-            placeholder="🔍 Search channels..."
+            placeholder="🔍 Search channels, region or combination"
             value={searchInput}
             onChange={handleSearch}
             style={styles.searchInput}
@@ -277,17 +277,17 @@ const styles = {
   searchContainer: {
     display: "flex",
     alignItems: "center",
-    backgroundColor: "#f8f9fa !important",
   },
   searchInput: {
-    width: "300px",
+    width: "500px",
     padding: "10px 16px",
     border: "1px solid #e0e0e0",
-    backgroundColor: "#f8f9fa !important",
     borderRadius: "4px",
     fontSize: "14px",
     outline: "none",
     transition: "all 0.15s ease",
+    background: "aliceblue",
+    color: "black",
   },
   tableWrapper: {
     overflowX: "auto",
